@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>New Passenger</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+    <link rel="stylesheet" href="/styles/add_flight_style.css">
+
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>New Passenger</h1>
+        <center>
+            
+            <form action="/api/v1/passengers" method="post">
+              <label><b>First Name:</b> </label><input type="text" name="first_name" required/></br></br>
+              <label><b>Last Name:</b> </label><input type="text" name="last_name" required/></br></br>
+              <label><b>Destination:</b> </label><input type="text" name="destination" minlength="3" maxlength="3" required/></br></br>
+             
+              <button id="viewFlightsButton"><b>Add Passenger</b></button>
+            </form>
+            
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

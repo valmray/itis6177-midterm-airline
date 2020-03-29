@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>All Flights</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+    <link rel="stylesheet" href="/styles/add_flight_style.css">
+
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>New Flight</h1>
+        <center>
+            
+            <form action="/api/v1/flights" method="post">
+              <label><b>Airline Name:</b> </label><input type="text" name="airline_name" required/></br></br>
+              <label><b>Date:</b> </label><input type="date" name="departure_date" required/></br></br>
+              <label><b>Time:</b> </label><input type="time" name="departure_time" required/></br></br>
+              <label><b>Number of Seats:</b> </label><input type="number" name="total_seats" min="1" required /></br></br>
+              <label><b>Destination:</b> </label><input type="text" name="destination" minlength="3" maxlength="3" required/></br></br>
+              <button id="viewFlightsButton"><b>Add Flight</b></button>
+            </form>
+            
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

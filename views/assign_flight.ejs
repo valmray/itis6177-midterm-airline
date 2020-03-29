@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Assign Flight</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+    <link rel="stylesheet" href="/styles/add_flight_style.css">
+
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>Assign Flight</h1>
+        <center>
+            <h2>Choose flight for passenger</h2>
+                <div style="overflow-y:auto;height:250px;width:60%">
+                    <table id="todaysFlights">
+                        <thead>
+                          <tr>
+                            <th id="name"><b>Flight Number</b></th>
+                            <th id="name"><b>Flight Date</b></th>
+                            <th id="category"><b>Departure Time</b></th>
+                            <th id="rating"><b>Destination</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <% for(var i = 0; i < flights.length; i++){ %>
+    
+                          <tr>
+                            <td><%= flights[i].flight_no %></td>
+                            <td><%= flights[i].departure_date %></td>
+                            <td><%= flights[i].departure_time %></td>
+                            <td><%= flights[i].destination %></td>
+                          </tr>
+    
+                          <% } %>
+                        </tbody>
+                      </table>
+    
+
+                   
+                </div>
+
+                <form action="/api/v1/passengers/<%= passenger_id %>" method="post">
+                    <label for="flights">Choose a Flight:</label>
+
+                    <select id="flights" name="flight_list">
+                        <% for(var i = 0; i < flights.length; i++){ %>
+                            <option value="<%= flights[i].flight_no %>">Flight <%= flights[i].flight_no %></option>
+                        <% } %>
+                    </select>
+                    <input type="hidden" name="_method" value="PATCH">
+                    </br><button id="viewFlightsButton"><b>Assign Flight</b></button>
+
+                </form>
+            
+        </center>
+    </main>
+  
+    <footer>
+
+    </footer>
+
+</body>
+</html>

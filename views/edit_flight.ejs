@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Update Flight</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+    <h1>Flight <%= flight.flight_no %></h1>
+
+        <center>
+            <form action="/api/v1/flights/<%= flight.flight_no %>" method="post">
+            <h2 >Edit Fields in the Table Below</h2></br>
+            <table id="todaysFlights">
+                <thead>
+                  <tr>
+                    <th id="name"><b>Airline</b></th>
+                    <th id="category"><b>Flight Date</b></th>
+                    <th id="rating"><b>Departure Time</b></th>
+                    <th id="manage"><b>Destination</b></th>
+                    <th id="manage"><b>Total Number of Seats</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                          <td><input type="text" name="airline_name" value="<%= flight.airline_name %>"/></td>
+                          <td><input type="date" name="departure_date" value="<%= flight.departure_date %>"/></td>
+                          <td><input type="time" name="departure_time" value="<%= flight.departure_time %>"/></td>
+                          <td><input type="text" name="destination" minlength="3" maxlength="3" value="<%= flight.destination %>"/></td>
+                          <td><input type="number" name="total_seats" min="1" value="<%= flight.total_seats %>"/></td>
+                        </tr>
+  
+                </tbody>
+              </table></br>
+                <input type="hidden" name="_method" value="PUT">
+
+                <button id="viewFlightsButton"><b>Update Flight</b></button>
+            </form></br></br> 
+                                
+           
+            <form action="/api/v1/flights/<%= flight.flight_no %>" method="post">
+            </br><h2>Add a Passenger to the Flight</h2></br>
+                <label for="passengers">Choose a Passenger:</label>
+
+                <select id="passengers" name="passenger_list">
+                    <% for(var i = 0; i < potential.length; i++){ %>
+                        <option value="<%= potential[i].passenger_id %>"> <%= potential[i].first_name %> <%= potential[i].last_name %></option>
+                    <% } %>
+                </select>
+                <input type="hidden" name="_method" value="PATCH"></br>
+                <% if(potential.length == 0){ %>
+                    <button id="viewFlightsButton" disabled><b>Assign Passenger</b></button>
+                <% }else{ %>
+                    <button id="viewFlightsButton"><b>Assign Passenger</b></button>
+                <% } %>
+            </form>
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

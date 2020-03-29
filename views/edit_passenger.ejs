@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Update Passenger</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+    <h1>Passenger <%= passenger.passenger_id %></h1>
+
+        <center>
+            <form action="/api/v1/passengers/<%= passenger.passenger_id %>" method="post">
+            <h2 >Edit Fields in the Table Below</h2></br>
+            <table id="todaysFlights">
+                <thead>
+                  <tr>
+                    <th id="name"><b>First Name</b></th>
+                    <th id="category"><b>Last Name</b></th>
+                    <th id="manage"><b>Destination</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                          <td><input type="text" name="first_name" value="<%= passenger.first_name %>"/></td>
+                          <td><input type="text" name="last_name" value="<%= passenger.last_name %>"/></td>
+                          <td><input type="text" name="destination" minlength="3" maxlength="3" value="<%= passenger.destination %>"/></td>
+                        </tr>
+  
+                </tbody>
+              </table></br>
+                <input type="hidden" name="_method" value="PUT">
+
+                <button id="viewFlightsButton"><b>Update Passenger</b></button>
+            </form></br></br> 
+                                
+           
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

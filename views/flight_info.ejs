@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Flight Info</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>Flight <%= flight.flight_no %></h1></br>
+
+        <center>
+          
+            <table id="todaysFlights">
+                <thead>
+                  <tr>
+                    <th id="name"><b>Airline</b></th>
+                    <th id="category"><b>Flight Date</b></th>
+                    <th id="rating"><b>Departure Time</b></th>
+                    <th id="manage"><b>Destination</b></th>
+                    <th id="manage"><b>Number of Passengers</b></th>
+                    <th id="manage"><b>Total Number of Seats</b></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                          <td><%= flight.airline_name %></td>
+                          <td><%= flight.departure_date %></td>
+                          <td><%= flight.departure_time %></td>
+                          <td><%= flight.destination %></td>
+                          <td><%= flight.no_passengers %></td>
+                          <td><%= flight.total_seats %></td>
+                        </tr>
+  
+                </tbody>
+              </table></br></br>
+
+             
+
+            <h2>Passengers on Flight <%= flight.flight_no %></h2>
+            <div style="overflow-y:auto;height:250px;width:60%">
+                <table id="todaysFlights">
+                    <thead>
+                      <tr>
+                        <th id="name"><b>Passenger ID</b></th>
+                        <th id="category"><b>First Name</b></th>
+                        <th id="rating"><b>Last Name</b></th>
+                        <th id="manage"><b>Remove</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < passengers.length; i++){ %>
+
+                            <tr>
+                              <td><%= passengers[i].passenger_id %></td>
+                              <td><%= passengers[i].first_name %></td>
+                              <td><%= passengers[i].last_name %></td>
+                              <td>
+                                <form action="/api/v1/flights/<%= flight.flight_no %>/<%= passengers[i].passenger_id %>" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button id="manageFlightButton"><b>Remove</b></button>
+                                </form>
+                                </td>
+                            </tr>
+      
+                            <% } %>
+                    </tbody>
+                  </table>                  
+            </div>
+
+            <form action="/api/v1/flights/<%= flight.flight_no %>/edit" method="get">
+                <button id="viewFlightsButton"><b>Edit Flight</b></button>
+            </form>
+        
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Home</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>Help</h1>
+        <center>
+            <h2>API Documentation</h2>
+            
+            <form action="/docs" method="get">
+                <button id="viewFlightsButton"><b>View Documentation</b></button>
+            </form></br></br>
+
+            <h2>Help with using website's features</h2>
+
+            <h3><b>To add a new passenger: </b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Passengers page</li>
+                <li>Click the Add Passenger button at the bottom of the page</li>
+                <li>Input a value for each field</li>
+                <li>Click the Add Passenger button to add the passenger to the database</li>
+            </ol>
+
+            <h3><b>To add a new flight: </b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Flights page</li>
+                <li>Click the Add Flight button at the bottom of the page</li>
+                <li>Input a value for each field</li>
+                <li>Click the Add Flight button to add the flight to the database</li>
+            </ol>
+
+            <h3><b>To modify a passenger:</b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Passengers page</li>
+                <li>Click the Assign/Edit button next to the passenger you want to modify</li>
+                <li>Click the Edit Passenger button on the passenger's info page</li>
+                <li>Change the values in the table for the field(s) you want to modify</li>
+                <li>Click the Update Passenger button to save the changes</li>
+            </ol>
+
+            <h3><b>To modify a flight:</b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Flights page</li>
+                <li>Click the View/Edit button next to the flight you want to modify</li>
+                <li>Click the Edit Flight button on the flight's info page</li>
+                <li>Change the values in the table for a field you want to modify</li>
+                <li>Click the Update Flight button to save the changes</li>
+            </ol>
+
+            <h3><b>There are two ways you can assign a passenger to a flight </br> (Note: If you want to reassign a passenger, you must remove them from the flight they're currently assign to first):  </b></h3>
+            <ol style="width: 30%">
+                <li><b>Assign from the Passenger Info page:</b></li>
+                <ol>
+                    <li>Go to the All Passengers page</li>
+                    <li>Click the Assign/Edit button next to the passenger you want to assign</li>
+                    <li>Click the Assign button in the table (If you don't see this button, it means the passenger has already been assigned)</li>
+                    <li>Choose a flight from the dropdown menu</li>
+                    <li>Click the Assign Flight button to assign the passenger the chosen flight</li>
+                </ol></br>
+                <li><b>Assign from the Edit Flight page:</b></li>
+                <ol>
+                    <li>Go to the All Flights page</li>
+                    <li>Click the View/Edit button next to the flight</li>
+                    <li>Click the Edit Flight button on the flight's info page</li>
+                    <li>Choose a passenger from the dropdown</li>
+                    <li>Click the Assign Passenger button to assign the chosen passenger to that flight</li>
+                </ol>
+            </ol>
+
+            <h3><b>To remove a passenger from a flight (Doesn't remove passenger from database): </b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Flights page</li>
+                <li>Click the View/Edit button next to the flight you want to modify</li>
+                <li>Click the Remove button next to the passenger you want to remove in the passenger table</li>
+            </ol>
+
+            <h3><b>To delete a flight (Permanent): </b></h3>
+            <ol style="width: 30%"> 
+                <li>Go to the All Flights page</li>
+                <li>Click the Delete button next to the flight you want to delete</li>
+            </ol>
+
+            <h3><b>To delete a passenger (Permanent): </b></h3>
+            <ol style="width: 30%">
+                <li>Go to the All Passengers page</li>
+                <li>Click the Delete button next to the passenger you want to delete</li>
+            </ol>
+
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

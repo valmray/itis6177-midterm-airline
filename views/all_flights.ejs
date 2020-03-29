@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>All Flights</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>All Flights</h1>
+        <center>
+            <h2>All Flights</h2>
+            <div style="overflow-y:auto;height:250px;width:60%">
+                <table id="todaysFlights">
+                    <thead>
+                      <tr>
+                        <th id="name"><b>Flight Number</b></th>
+                        <th id="name"><b>Flight Date</b></th>
+                        <th id="category"><b>Departure Time</b></th>
+                        <th id="rating"><b>Destination</b></th>
+                        <th id="manage"><b>View/Edit Flight</b></th>
+                        <th id="manage"><b>Delete Flight</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i = 0; i < flights.length; i++){ %>
+
+                      <tr>
+                        <td><%= flights[i].flight_no %></td>
+                        <td><%= flights[i].departure_date %></td>
+                        <td><%= flights[i].departure_time %></td>
+                        <td><%= flights[i].destination %></td>
+                        <td>
+                            <form action="flights/<%= flights[i].flight_no %>" method="get">
+                                <button id="manageFlightButton"><b>View/Edit</b></button>
+                            </form>
+                        </td>
+                        <td>
+                          <form action="flights/<%= flights[i].flight_no %>" method="post">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <button id="manageFlightButton"><b>Delete</b></button>
+                          </form>
+                        </td>
+                      </tr>
+
+                      <% } %>
+                    </tbody>
+                  </table>
+
+                  
+            </div>
+
+            <form action="flights/newFlight" method="get">
+              <button id="viewFlightsButton"><b>Add Flight</b></button>
+            </form>
+
+            
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

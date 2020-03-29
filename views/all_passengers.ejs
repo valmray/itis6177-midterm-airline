@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>All Passengers</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+    <link rel="stylesheet" href="/styles/add_flight_style.css">
+
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>All Passengers</h1>
+        <center>
+            <h2>List of Passengers</h2>
+            <div style="overflow-y:auto;height:250px;width:60%">
+                <table id="todaysFlights">
+                    <thead>
+                      <tr>
+                        <th id="name"><b>Passenger ID</b></th>
+                        <th id="category"><b>First Name</b></th>
+                        <th id="rating"><b>Last Name</b></th>
+                        <th id="manage"><b>Assign/Edit Passenger</b></th>
+                        <th id="manage"><b>Delete Passenger</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i < passengers.length; i++){ %>
+
+                            <tr>
+                              <td><%= passengers[i].passenger_id %></td>
+                              <td><%= passengers[i].first_name %></td>
+                              <td><%= passengers[i].last_name %></td>
+                               <td>
+                                  <form action="/api/v1/passengers/<%= passengers[i].passenger_id %>" method="get">
+                                    <button id="manageFlightButton"><b>Assign/Edit</b></button>
+                                  </form>
+                               </td>
+                               <td>
+                                <form action="/api/v1/passengers/<%= passengers[i].passenger_id %>" method="post">
+                                  <input type="hidden" name="_method" value="DELETE">
+                                  <button id="manageFlightButton"><b>Delete</b></button>
+                                </form>
+                              </td>
+                            </tr>
+      
+                        <% } %>
+                    </tbody>
+                  </table>                  
+            </div>
+
+            <form action="/api/v1/passengers/newPassenger" method="get">
+              <button id="viewFlightsButton"><b>Add Passenger</b></button>
+            </form>
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Passenger Info</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1><%= passenger.first_name %> <%= passenger.last_name %></h1></br>
+
+        <center>
+          
+            <div style="overflow-y:auto;height:250px;width:60%">
+                <table id="todaysFlights">
+                    <thead>
+                      <tr>
+                        <th id="name"><b>Passenger ID</b></th>
+                        <th id="manage"><b>Destination</b></th>
+                        <th id="manage"><b>Assigned?</b></th>
+                        <th id="manage"><b>Flight</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+    
+                            <tr>
+                              <td><%= passenger.passenger_id %></td>
+                              <td><%= passenger.destination %></td>
+                              <% if(passenger.assigned == 1){ %>
+                                <td>Yes</td>
+                                <td><%= passenger.flight_no %></td>
+                              <% }else{ %>   
+                                <td>No</td>                            
+                                <td>
+                                    <form action="/api/v1/passengers/<%= passenger.passenger_id %>/assign" method="get">
+                                        <button id="manageFlightButton"><b>Assign</b></button>
+                                    </form>
+                                </td>
+                               <% } %>
+                            </tr>
+      
+                    </tbody>
+                  </table>              
+            </div>
+
+            <form action="/api/v1/passengers/<%= passenger.passenger_id %>/edit" method="get">
+                <button id="viewFlightsButton"><b>Edit Passenger</b></button>
+            </form>
+        
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>

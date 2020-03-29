@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+    <title>Home</title>
+    
+    <link rel="stylesheet" href="/styles/header_style.css" type="text/css">
+    <link rel="stylesheet" href="/styles/index_style.css">
+</head>
+
+<body id="wrapper">
+	<header>
+        <%- include('partials/header'); -%>  
+    </header>
+    
+    <main>
+        <h1>Home</h1>
+        <center>
+            <h2>Scheduled Flights for  <%= currentDate %></h2>
+            <div style="overflow-y:auto;height:250px;width:60%">
+                <table id="todaysFlights">
+                    <thead>
+                      <tr>
+                        <th id="name"><b>Flight Number</b></th>
+                        <th id="category"><b>Departure Time</b></th>
+                        <th id="rating"><b>Destination</b></th>
+                        <th id="manage"><b>Manage Flight</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i = 0; i < rows.length; i++){ %>
+
+                      <tr>
+                        <td><%= rows[i].flight_no %></td>
+                        <td><%= rows[i].departure_time %></td>
+                        <td><%= rows[i].destination %></td>
+                        <td>
+                            <form action="/api/v1/flights/<%= rows[i].flight_no %>" method="get">
+                                <button id="manageFlightButton"><b>View/Edit</b></button>
+                            </form>
+                        </td>
+                      </tr>
+
+                      <% } %>
+                    </tbody>
+                  </table>
+
+            </div>
+            
+            <form action="/api/v1/flights" method="get">
+                <button id="viewFlightsButton"><b>View All Flights</b></button>
+            </form>
+
+        </center>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
